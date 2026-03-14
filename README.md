@@ -1,130 +1,134 @@
-## Handwritten Equation Solver using DL with Web App
+# ✍️ Handwritten Equation Solver using Deep Learning
 
-### 🎯 **Goal**
+> A deep learning pipeline using CNNs and RNNs to recognize and solve handwritten mathematical equations, with a Streamlit web app interface.
 
-The main goal of this project is to develop a Deep Learning (DL) model that can accurately solve handwritten mathematical equations. This project utilizes Convolutional Neural Networks (CNNs) and Recurrent Neural Networks (RNNs) to recognize and interpret handwritten characters and equations.
+---
 
-### 🧵 **Dataset**
+## 🎯 Goal
 
-The dataset used for training and testing the models can be accessed from the following sources:
-- [Direct Download](https://cainvas-static.s3.amazonaws.com/media/user_data/Yuvnish17/data.zip)
-- [Kaggle Dataset](https://www.kaggle.com/datasets/xainano/handwrittenmathsymbols/data) 
+Develop a Deep Learning model that accurately recognizes and solves handwritten mathematical equations using Convolutional Neural Networks (CNNs) and Recurrent Neural Networks (RNNs).
 
+---
 
-### 🧾 **Description**
+## 🗂️ Dataset
 
-The Handwritten Equation Solver project addresses the challenge of accurately interpreting and solving handwritten mathematical equations, which is a non-trivial task due to the inherent variability in handwriting. Traditional OCR systems often fail to effectively handle these variations, leading to errors in character recognition and equation interpretation.
+The dataset used for training and testing can be accessed from:
 
+- 📥 [Direct Download](https://cainvas-static.s3.amazonaws.com/media/user_data/Yuvnish17/data.zip)
+- 📊 [Kaggle Dataset](https://www.kaggle.com/datasets/xainano/handwrittenmathsymbols/data)
 
-### 🧮 **What I had done!**
+---
 
-- Data Preparation:
+## 🧾 Description
 
-    - The dataset comprises images of handwritten mathematical symbols and equations. The dataset is sourced from Kaggle [Dataset](https://www.kaggle.com/datasets/xainano/handwrittenmathsymbols/data) and can also be downloaded directly from [here](https://cainvas-static.s3.amazonaws.com/media/user_data/Yuvnish17/data.zip)
+Traditional OCR systems often fail to handle the variability in handwriting, leading to errors in character recognition and equation interpretation. This project addresses that challenge using a deep learning approach combining spatial feature extraction (CNN) with sequential reasoning (RNN).
 
-    ![img](images/dataset.png)
+---
 
-    - Preprocessing steps include resizing images, normalizing pixel values, and augmenting data to improve model robustness.
+## ⚙️ What I Did
 
-    ![img](images/preprocessing.png)
+### 1. Data Preparation
 
+The dataset contains images of handwritten mathematical symbols and equations sourced from [Kaggle](https://www.kaggle.com/datasets/xainano/handwrittenmathsymbols/data).
 
+![Dataset](images/dataset.png)
 
-- Character Recognition with CNNs:
+Preprocessing steps include resizing images, normalizing pixel values, and augmenting data to improve model robustness.
 
-    - Model Architecture: The CNN model is designed to capture spatial hierarchies and patterns in the input images. It consists of multiple convolutional layers followed by pooling layers and fully connected layers.
+![Preprocessing](images/preprocessing.png)
 
-   
-    - Training: The model is trained on individual character images to classify each character accurately. The CNN achieved an impressive accuracy of `96.97%` in recognizing handwritten characters.
+---
 
-    ![img4](images/cnn.png)
+### 2. Character Recognition with CNN
 
-    
-    - CNNs are highly effective in capturing local patterns and spatial features, making them ideal for character recognition tasks.
+**Model Architecture:** Multiple convolutional layers followed by pooling and fully connected layers, designed to capture spatial hierarchies and local patterns.
 
-- Preprocessing for Equation Recognition
+**Training:** The CNN was trained on individual character images and achieved a validation accuracy of **96.97%**.
 
-  Before feeding the images into the model for equation recognition, several preprocessing steps are performed to enhance the clarity and uniformity of the input data:
+![CNN Architecture](images/cnn.png)
 
-  1. Grayscale Conversion: The input image is converted to grayscale to simplify the processing.
-  2. Thresholding: Binary thresholding is applied to convert the image to a binary format, making it easier to detect contours.
-  3. Contour Detection: Contours of the characters are detected to identify individual symbols.
-  4. Bounding Box Extraction: Bounding boxes are created around each detected contour to isolate individual characters.
-  4. Padding and Resizing: Each character is padded and resized to a uniform size (e.g., 32x32 pixels) to match the input requirements of the CNN model.
+CNNs are highly effective for character recognition because they learn directly from pixel values without manual feature engineering.
 
-  These preprocessing steps ensure that the input to the model is consistent, leading to more accurate character recognition and equation interpretation.
+---
 
-- Implementation
+### 3. Preprocessing for Equation Recognition
 
-  The implementation involves integrating both CNN model to create a pipeline that processes input images, recognizes individual characters, and interprets the sequence to solve equations. The steps include:
-  - Preprocessing: Input images are preprocessed to enhance clarity and uniformity.
-  - Character Recognition: The CNN model identifies and classifies individual characters in the image.
-  - Sequence Interpretation: The RNN model interprets the sequence of recognized characters to form and solve the equation.
-  - Output: The final result is displayed, showing the interpreted equation and its solution.
+Before feeding images into the model, the following steps are applied:
 
--  Web application
+| Step | Description |
+|------|-------------|
+| 1. Grayscale conversion | Simplifies processing by removing color channels |
+| 2. Thresholding | Converts image to binary format for contour detection |
+| 3. Contour detection | Identifies individual symbol boundaries |
+| 4. Bounding box extraction | Isolates each character into its own region |
+| 5. Padding & resizing | Normalizes each character to 32×32 pixels |
 
-    A Streamlit application has been developed to provide a user-friendly interface for solving hand written math equations using DL models. The application allows users to use their free hand to draw or write the math equation on a canvas and upload the drawing to the model. The interface includes features like stroke width adjustment, real-time updates, and a prediction button that processes the image and displays the equation and its solution.
+---
 
+### 4. Full Pipeline Implementation
 
-   ![image](images/sample.png)
+```
+Input Image → Preprocessing → CNN (Character Recognition) → RNN (Sequence Interpretation) → Solution
+```
 
+Steps:
+1. **Preprocessing** — Enhance clarity and uniformity of input images
+2. **Character recognition** — CNN classifies individual characters
+3. **Sequence interpretation** — RNN interprets the character sequence to form an equation
+4. **Output** — Displays the interpreted equation and its solution
 
- 
-### 🚀 **Models Implemented**
+---
 
-- Convolutional Neural Netowrk (CNN)
-- Recurrent Neural Netowrk (RNN)
+### 5. Web Application
 
-### 📚 **Libraries Needed**
+A **Streamlit** app provides a user-friendly interface where users can draw equations on a canvas. Features include stroke width adjustment, real-time updates, and a prediction button.
 
-- TensorFlow
-- Streamlit
-- OpenCV
-- Numpy
-- Pandas
-- Seaborn
-- Sklearn
-- Matplotlib
+![Sample App](images/sample.png)
 
+---
 
-### ⚙️ **Usage**
+## 🚀 Models Implemented
 
-1. **Exploring Notebook**: `Notebook.ipynb` cover data analysis, preprocessing, model training, and evaluation steps.
-   -  Navigate to the `Notebook.ipynb`
-   -  Run all the cells
-2. **Streamlit App:** The `app.py` contains the source code for the Streamlit web application. To run the app locally, follow the instructions below:
+| Model | Purpose |
+|-------|---------|
+| **CNN** | Character recognition — classifies individual handwritten symbols |
+| **RNN** | Sequence interpretation — forms and solves the full equation |
 
-    ```bash
-    pip install -r requirements.txt
-    streamlit run app.py
-    ```
+---
 
-    
-### 📈 **Performance of the Models based on the Accuracy Scores**
+## 📚 Libraries
 
-<div align="center">
-<table>
-  <tr>
-    <th>Model</th>
-    <th>Validation Accuracy</th>
-  </tr>
-  <tr>
-    <td>CNN</td>
-    <td>96.97%</td>
-  </tr>
-  <tr>
-    <td>RNN</td>
-    <td>74.18%</td>
-  </tr>
-</table>
-</div>
+`TensorFlow` `Streamlit` `OpenCV` `NumPy` `Pandas` `Seaborn` `Sklearn` `Matplotlib`
 
-![img1](images/graphs.png)
+---
 
+## 🛠️ Usage
 
-### 📢 **Conclusion**
+### Notebook
+Open `Notebook.ipynb` and run all cells to explore data analysis, preprocessing, model training, and evaluation.
 
-In conclusion, the handwritten equation solver utilizing deep learning techniques, including Convolutional Neural Networks (CNNs) and Recurrent Neural Networks (RNNs), has demonstrated promising accuracy levels. The CNN-based approach achieved an impressive accuracy of `96.97%`, while the RNN-based method achieved a respectable accuracy of `74.18%`.
+### Streamlit App
 
-The `CNN model` excelled in accurately recognizing and classifying individual handwritten characters within the equations. Its ability to effectively capture spatial hierarchies and local patterns in the input images contributed to its high accuracy. With its deep layers and convolutional operations, the CNN was capable of learning complex features directly from the pixel values, enabling robust classification of handwritten characters.
+```bash
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+---
+
+## 📈 Performance
+
+| Model | Validation Accuracy |
+|-------|-------------------|
+| **CNN** | ✅ 96.97% |
+| **RNN** | 🟡 74.18% |
+
+![Training Graphs](images/graphs.png)
+
+---
+
+## 📝 Conclusion
+
+The CNN-based approach achieved **96.97% accuracy** by effectively capturing spatial hierarchies and local patterns in handwritten characters. The RNN contributed **74.18% accuracy** on sequence-level interpretation to form complete equations.
+
+The CNN excels because its convolutional layers learn complex features directly from pixel values, enabling robust classification across varied handwriting styles. Together, the two models form a capable pipeline for real-world handwritten equation solving.
