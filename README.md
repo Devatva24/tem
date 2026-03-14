@@ -35,7 +35,7 @@ The Handwritten Equation Solver project addresses the challenge of accurately in
     - Model Architecture: The CNN model is designed to capture spatial hierarchies and patterns in the input images. It consists of multiple convolutional layers followed by pooling layers and fully connected layers.
 
    
-    - Training: The model is trained on individual character images to classify each character accurately. The CNN achieved an impressive accuracy of `97.57%` in recognizing handwritten characters.
+    - Training: The model is trained on individual character images to classify each character accurately. The CNN achieved an impressive accuracy of `96.97%` in recognizing handwritten characters.
 
     ![img4](images/cnn.png)
 
@@ -67,7 +67,7 @@ The Handwritten Equation Solver project addresses the challenge of accurately in
     A Streamlit application has been developed to provide a user-friendly interface for solving hand written math equations using DL models. The application allows users to use their free hand to draw or write the math equation on a canvas and upload the drawing to the model. The interface includes features like stroke width adjustment, real-time updates, and a prediction button that processes the image and displays the equation and its solution.
 
 
-   ![image](images/graphs.png)
+   ![image](images/sample.png)
 
 
  
@@ -111,11 +111,11 @@ The Handwritten Equation Solver project addresses the challenge of accurately in
   </tr>
   <tr>
     <td>CNN</td>
-    <td>97.57%</td>
+    <td>96.97%</td>
   </tr>
   <tr>
     <td>RNN</td>
-    <td>76.32%</td>
+    <td>74.18%</td>
   </tr>
 </table>
 </div>
